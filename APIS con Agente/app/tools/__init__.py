@@ -1,0 +1,1 @@
+from .ocr_fastmcp import procesar_lectura_ticket

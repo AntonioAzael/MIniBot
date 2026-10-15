@@ -1,0 +1,1 @@
+from .minio_service import subir_ticket_imagen, descargar_ticket_bytes

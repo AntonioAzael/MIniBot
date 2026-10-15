@@ -1,0 +1,31 @@
+# Entornos virtuales (evita subir gigas de librerias de tu laptop)
+venv/
+*/venv/
+.venv/
+*/.venv/
+
+# Secretos y credenciales personales
+.env
+*/.env
+
+# Datos locales de MinIO y base de datos local
+minio_data/
+*/minio_data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Caches de Python
+__pycache__/
+*/__pycache__/
+*.pyc
+
+# Modelos descargados de EasyOCR y temporales
+.EasyOCR/
+*/.EasyOCR/
+temp/
+tmp/
+
+# Archivos de configuracion del editor
+.vscode/
+.idea/

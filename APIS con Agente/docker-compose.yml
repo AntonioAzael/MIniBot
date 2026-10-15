@@ -1,0 +1,47 @@
+services:
+  # Servicio de Base de Datos
+  db:
+    image: postgres:15-alpine
+    container_name: mikedb_container7
+    restart: always
+    environment:
+      POSTGRES_USER: mike3
+      POSTGRES_PASSWORD: super_secret_password4
+      POSTGRES_DB: mikedb3
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres_data3:/var/lib/postgresql/data
+    networks:
+      - clasea_network
+
+  # Servicio de Almacenamiento MinIO
+  minio:
+    image: chainguard/minio:latest
+    container_name: minio_storage
+    user: "65532:65532"
+    ports:
+      - "9000:9000"   # Puerto API S3
+      - "9001:9001"   # Puerto Consola Web
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: passwordseguro123
+    volumes:
+      - ./minio_data:/data
+    command: server /data --console-address ":9001"
+    restart: unless-stopped
+    networks:
+      - clasea_network
+
+
+
+# Definicion de volumenes
+volumes:
+  postgres_data3:
+  db_data:
+    driver: local
+
+# Definicion de redes
+networks:
+  clasea_network:
+    driver: bridge
